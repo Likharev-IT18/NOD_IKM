@@ -1,0 +1,5 @@
+﻿  functions.cpp
+C:\Users\User\Desktop\ИКМ C++\NOD_IKM\NOD_IKM\functions.cpp(70,25): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\User\Desktop\ИКМ C++\NOD_IKM\NOD_IKM\functions.cpp(71,25): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\User\Desktop\ИКМ C++\NOD_IKM\NOD_IKM\functions.cpp(97,22): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+  NOD_IKM.vcxproj -> C:\Users\User\Desktop\ИКМ C++\NOD_IKM\x64\Debug\NOD_IKM.exe
