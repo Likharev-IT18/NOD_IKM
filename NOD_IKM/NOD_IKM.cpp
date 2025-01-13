@@ -76,6 +76,7 @@ int main()
             SetColor(White, Black);
             cout << " 0" << endl;
             SetColor(LightGray, Black);
+            cout << "\n\n" << endl;
         }
         else {
             int sizeM, sizeN, sizeP;
@@ -123,6 +124,7 @@ int main()
             SetColor(White, Black);
             cout << " " << p << endl;
             SetColor(LightGray, Black);
+            cout << "\n\n" << endl;
         }
     }
 }

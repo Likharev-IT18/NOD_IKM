@@ -85,7 +85,6 @@ void nod(string& str1, string& str2){
 			str_to_array(num2, str2, size, part);
 			
 			if (k == 1) { // если первое больше
-				//cout << "1 больше" << endl;
 				raznost(num1, num2, otvetArr, part); //вычитаем из первого второе
 				
 				str1 = ""; //обнуляем первую строку, чтобы перезаписать в неё разность
@@ -108,7 +107,6 @@ void nod(string& str1, string& str2){
 
 			}
 			else if (k == 2) { // если второе больше
-				//cout << "2 больше" << endl;
 				raznost(num2, num1, otvetArr, part); // вычитаем из второго первое
 				
 				str1 = ""; //обнуляем первую строку, чтобы перезаписать в неё разность
@@ -140,8 +138,8 @@ void nod(string& str1, string& str2){
 			str1 = "1";
 			break;
 		}
-		cout << "str1: " << str1 << endl;
-		cout << "str2: " << str2 << endl;
+		//cout << "str1: " << str1 << endl;
+		//cout << "str2: " << str2 << endl;
 		
 	}
 
