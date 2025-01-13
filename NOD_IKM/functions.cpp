@@ -17,47 +17,25 @@ bool chislo(string str) {
 }
 
 void str_to_array(int* arr, string str, int length, int part) {
-	//string str_arr = "";
-	//// j - номер элемента в массиве, k - часть, i - первый символ
-	//int k = 0, i = str.size(), j = 0;
-	//// проверка минуса
-	//int n = str.size() - sizeArr;
-	//while (k < partArr)
-	//{
-	//	// выделяем подстроку из 9 цифр, двигаясь с конца
-	//	// если последняя подстрока содержит меньше 9 символов,то
-	//	// берем с 0-го символа все оставшиеся
-	//	if (i > 9) {
-	//		i -= 9;
-	//		str_arr = str.substr(i, 9);
-	//	}
-	//	else {
-	//		str_arr = str.substr(0, i);
-	//	}
-	//	//str_arr = (i<9) ? str.substr(i, 9) : str.substr(n, i);
-	//	//cout << str_arr << endl;
-	//	arr[k] = atoi(str_arr.c_str()); // преобразование в число  
-	//	k++;
-	//}
-
-	string str_arr = ""; // строка, которую будем заносить в массив
-	// k - номер элемента в массиве, i -позиция первого символа
-	int k = 0, i = length - 9;
-	while (k < part)
+	string str_arr; // строка, которую будем заносить в массив
+	int j = length;
+	// выделяем подстроку из 9 цифр, двигаясь с конца
+	// если последняя подстрока содержит меньше 9 символов,то
+	// берем с 0-го символа все оставшиеся
+	for (int i = 0; i < part; i++)
 	{
-		// выделяем подстроку из 9 цифр, двигаясь с конца
-		// если последняя подстрока содержит меньше 9 символов,то
-		// берем с 0-го символа все оставшиеся
-		if (i > 9) {
-			i -= 9;
-			str_arr = str.substr(i, 9);
+		if (j > 9) {
+			j -= 9;
+			str_arr = str.substr(j, 9);
 		}
 		else {
-			str_arr = str.substr(0, i);
+			str_arr = str.substr(0, j);
 		}
-		arr[k] = atoi(str_arr.c_str()); // преобразование в число
-		k++;
+		arr[i] = atoi(str_arr.c_str());
 	}
+	/*for (int i = 0; i < part; i++) {
+		cout << arr[i] << endl;
+	}*/
 }
 
 void nod(string& str1, string& str2){
@@ -72,11 +50,11 @@ void nod(string& str1, string& str2){
 		// Добавляем нули слева к меньшей подстроке
 		k = 3; // числа равны
 		if (sizeStr1 > sizeStr2) {
-			str1.insert(0, sizeStr1 - sizeStr2, '0');
+			str2.insert(0, sizeStr1 - sizeStr2, '0');
 			k = 1; // первое число больше
 		}
 		else if (sizeStr1 < sizeStr2) {
-			str2.insert(0, sizeStr2 - sizeStr1, '0');
+			str1.insert(0, sizeStr2 - sizeStr1, '0');
 			k = 2; // второе число больше
 		}
 		else { // длины равны
@@ -98,9 +76,9 @@ void nod(string& str1, string& str2){
 			part = (size % 9 == 0) ? (size / 9) : (size / 9 + 1); // ищем сколько частей
 
 			//создаем динамические массивы
-			int* num1 = new int[size * 9];
-			int* num2 = new int[size * 9];
-			int* otvetArr = new int[size * 9];
+			int* num1 = new int[part];
+			int* num2 = new int[part];
+			int* otvetArr = new int[part];
 
 			//с конца заносим строки в массивы разделенные по 9 цифр в одной части
 			str_to_array(num1, str1, size, part);
@@ -111,36 +89,59 @@ void nod(string& str1, string& str2){
 				raznost(num1, num2, otvetArr, part); //вычитаем из первого второе
 				
 				str1 = ""; //обнуляем первую строку, чтобы перезаписать в неё разность
+				str2 = "";// обнуляем вторую строку
 				for (int i = part - 1; i >= 0; i--) // перезаписываем разность в первую строку
 				{
-					if (i != 0) {
-						str1 += to_str(otvetArr[i]); // выводим с конца с добавлением нулей
+					if (i == part-1) {
+						if (otvetArr[i] != 0) { // если ноль, то его не нужно записывать
+							str1 += to_string(otvetArr[i]); // не добавляем нули в начале
+						}
+						if (num2[i] != 0) {
+							str2 += to_string(num2[i]); // не добавляем нули в начале
+						}
 					}
 					else {
-						str1 += to_string(otvetArr[i]); // не добавляем нули в начале
+						str1 += to_str(otvetArr[i]); // выводим с конца с добавлением нулей
+						str2 += to_str(num2[i]);
 					}
 				}
+
 			}
 			else if (k == 2) { // если второе больше
 				//cout << "2 больше" << endl;
 				raznost(num2, num1, otvetArr, part); // вычитаем из второго первое
 				
+				str1 = ""; //обнуляем первую строку, чтобы перезаписать в неё разность
 				str2 = "";// обнуляем вторую строку
-				for (int i = part - 1; i >= 0; i--) // перезаписываем разность во вторую строку
+				for (int i = part - 1; i >= 0; i--) // перезаписываем разность в первую строку
 				{
-					if (i != 0) {
-						str2 += to_str(otvetArr[i]);
+					if (i == part - 1) {
+						if (num1[i] != 0) {
+							str1 += to_string(num1[i]); // не добавляем нули в начале
+						}
+						if (otvetArr[i] != 0) {
+							str2 += to_string(otvetArr[i]); // не добавляем нули в начале
+						}
 					}
 					else {
-						str2 += to_string(otvetArr[i]);
+						str1 += to_str(num1[i]); // выводим с конца с добавлением нулей
+						str2 += to_str(otvetArr[i]);
 					}
 				}
 			}
 
 			delete[] num1, num2, otvetArr;
 		}
-		//cout << "str1: " << str1 << endl;
-		//cout << "str2: " << str2 << endl;
+		if (str1 == "1") { // проверка на 1 для небольшой оптимизации
+			str2 = "1";
+			break;
+		}
+		else if (str2 == "1") {
+			str1 = "1";
+			break;
+		}
+		cout << "str1: " << str1 << endl;
+		cout << "str2: " << str2 << endl;
 		
 	}
 
@@ -148,7 +149,20 @@ void nod(string& str1, string& str2){
 
 void raznost(int* arr1, int* arr2, int* otvet, int part) { // разность
 	for (int i = 0; i < part; i++) {
-		otvet[i] = arr1[i] - arr2[i];
+		if ((arr2[i] != 0) && (arr1[i] > arr2[i])) {
+			if ((arr1[i] % arr2[i]) > 0) {
+				otvet[i] = arr1[i] - (arr2[i] * (arr1[i] / arr2[i])); // будем вычитать сразу много
+			}
+			else if ((arr1[i] / arr2[i] > 2)) {
+				otvet[i] = arr1[i] - (arr2[i] * (arr1[i] / arr2[i] - 1));
+			}
+			else {
+				otvet[i] = arr1[i] - arr2[i];
+			}
+		}
+		else {
+			otvet[i] = arr1[i] - arr2[i];
+		}
 		if (otvet[i] < 0) { //занимаем
 			otvet[i] += 1000000000;
 			arr1[i + 1]--;
@@ -156,7 +170,7 @@ void raznost(int* arr1, int* arr2, int* otvet, int part) { // разность
 	}
 }
 
-string to_str(long int m) // добавляем нули до 9 цифр
+string to_str(int m) // добавляем нули до 9 цифр
 {
 	string s = to_string(m);
 	s.insert(0, 9 - s.length(), '0');

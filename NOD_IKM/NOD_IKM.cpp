@@ -9,50 +9,73 @@ int main()
     setlocale(LC_ALL, "Ru");
 
     string m = "", n = "", p = "";
-    int kolvo_null = 0; // будем считать количество нулей
+    int kolvo_null; // будем считать количество нулей
+    SetColor(Yellow, Black);
     cout << "\t\tНахождение НОД трёх чисел" << endl;
-    
+    SetColor(LightGray, Black);
+
     bool ch_norm = true; // будем требовать ввод пока введено не число
     while (true) {
+        kolvo_null = 0;
         //   Записываем 3 числа в строки
         //первое число
         do {
             ch_norm = true;
-            cout << "Число 1:";
+            SetColor(Cyan, Black);
+            cout << "Число 1: ";
+            SetColor(White, Black);
             getline(cin, m);
+            SetColor(LightGray, Black);
             if (!chislo(m)) {
                 ch_norm = false;
+                SetColor(White, Red);
                 cout << "Неправильный ввод числа." << endl;
+                SetColor(LightGray, Black);
+                cout << "\n\n";
             }
         } while (!ch_norm);
         if (m == "0") kolvo_null++;
         //второе число
         do {
             ch_norm = true;
-            cout << "Число 2:";
+            SetColor(Cyan, Black);
+            cout << "Число 2: ";
+            SetColor(White, Black);
             getline(cin, n);
+            SetColor(LightGray, Black);
             if (!chislo(n)) {
                 ch_norm = false;
+                SetColor(White, Red);
                 cout << "Неправильный ввод числа." << endl;
+                SetColor(LightGray, Black);
+                cout << "\n\n";
             }
         } while (!ch_norm);
         if (n == "0") kolvo_null++;
         //третье число
         do {
             ch_norm = true;
-
-            cout << "Число 3:";
+            SetColor(Cyan, Black);
+            cout << "Число 3: ";
+            SetColor(White, Black);
             getline(cin, p);
-
+            SetColor(LightGray, Black);
             if (!chislo(p)) {
                 ch_norm = false;
+                SetColor(White, Red);
                 cout << "Неправильный ввод числа." << endl;
+                SetColor(LightGray, Black);
+                cout << "\n\n";
             }
         } while (!ch_norm);
         if (p == "0") kolvo_null++;
 
         if (kolvo_null > 0) { // если есть хотябы 1 ноль то ответ сразу 0
-            cout << "Ответ: 0" << endl; 
+            SetColor(White, Green);
+            cout << "Ответ:";
+            SetColor(White, Black);
+            cout << " 0" << endl;
+            SetColor(LightGray, Black);
         }
         else {
             int sizeM, sizeN, sizeP;
@@ -95,8 +118,23 @@ int main()
             // Ищем нод ответа предыдущего нода и третьего числа
             nod(n, p);
 
-            cout << "Ответ:" << p << endl;
-
+            SetColor(White, Green);
+            cout << "Ответ:";
+            SetColor(White, Black);
+            cout << " " << p << endl;
+            SetColor(LightGray, Black);
         }
     }
+}
+
+//Функции для смены цвета
+void SetColor(int text, int background)
+{
+    HANDLE hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);
+    SetConsoleTextAttribute(hStdOut, (WORD)((background << 4) | text));
+}
+void SetColor(int text, ConsoleColor background)
+{
+    HANDLE hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);
+    SetConsoleTextAttribute(hStdOut, (WORD)((background << 4) | text));
 }
