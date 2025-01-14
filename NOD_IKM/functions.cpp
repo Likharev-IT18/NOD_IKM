@@ -128,7 +128,9 @@ void nod(string& str1, string& str2){
 				}
 			}
 
-			delete[] num1, num2, otvetArr;
+			delete[] num1;
+			delete[] num2;
+			delete[] otvetArr;
 		}
 		if (str1 == "1") { // проверка на 1 для небольшой оптимизации
 			str2 = "1";

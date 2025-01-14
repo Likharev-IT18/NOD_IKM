@@ -1,11 +1,5 @@
-﻿  NOD_IKM.cpp
-C:\Users\User\Desktop\ИКМ C++\NOD_IKM\NOD_IKM\NOD_IKM.cpp(87,34): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
-C:\Users\User\Desktop\ИКМ C++\NOD_IKM\NOD_IKM\NOD_IKM.cpp(90,32): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
-C:\Users\User\Desktop\ИКМ C++\NOD_IKM\NOD_IKM\NOD_IKM.cpp(92,34): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
-C:\Users\User\Desktop\ИКМ C++\NOD_IKM\NOD_IKM\NOD_IKM.cpp(95,32): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
-C:\Users\User\Desktop\ИКМ C++\NOD_IKM\NOD_IKM\NOD_IKM.cpp(97,34): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
-C:\Users\User\Desktop\ИКМ C++\NOD_IKM\NOD_IKM\NOD_IKM.cpp(100,32): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
-C:\Users\User\Desktop\ИКМ C++\NOD_IKM\NOD_IKM\NOD_IKM.cpp(83,24): warning C4101: partN: неиспользованная локальная переменная
-C:\Users\User\Desktop\ИКМ C++\NOD_IKM\NOD_IKM\NOD_IKM.cpp(83,31): warning C4101: partP: неиспользованная локальная переменная
-C:\Users\User\Desktop\ИКМ C++\NOD_IKM\NOD_IKM\NOD_IKM.cpp(83,17): warning C4101: partM: неиспользованная локальная переменная
+﻿  functions.cpp
+C:\Users\User\Desktop\ИКМ C++\NOD_IKM\NOD_IKM\functions.cpp(48,25): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\User\Desktop\ИКМ C++\NOD_IKM\NOD_IKM\functions.cpp(49,25): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\User\Desktop\ИКМ C++\NOD_IKM\NOD_IKM\functions.cpp(75,22): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
   NOD_IKM.vcxproj -> C:\Users\User\Desktop\ИКМ C++\NOD_IKM\x64\Debug\NOD_IKM.exe
